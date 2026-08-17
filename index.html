@@ -104,6 +104,7 @@ header .user span{color:var(--cyanL);font-weight:600;text-shadow:0 0 10px rgba(6
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0}
 .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 4s infinite}
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -237,7 +238,7 @@ header .user span{color:var(--cyanL);font-weight:600;text-shadow:0 0 10px rgba(6
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
 <script>
-// ==================== 🔥 CONFIG ====================
+// ==================== 🔥 YOUR CONFIG ====================
 const firebaseConfig = {
   apiKey: "AIzaSyC3iRoxQcbwVdWckQK-gOofmyko3f5XiUQ",
   authDomain: "auth-sjlplaywer.firebaseapp.com",
@@ -247,12 +248,8 @@ const firebaseConfig = {
   appId: "1:774427853258:web:38c2332e47f1429a920f33",
   measurementId: "G-YY51NQESL9"
 };
-// ===================================================
+// ========================================================
 
-
-
-
-  
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -276,7 +273,7 @@ function init(){
   }
   auth.onAuthStateChanged(u=>{
     if(u){ st.user=u; document.getElementById('uname').textContent=u.displayName||u.email.split('@')[0]; load(); show('player'); }
-n    else{ st.user=null; st.list=[]; st.idx=-1; audio.pause(); if(unsub){unsub();unsub=null;} show('login'); }
+    else{ st.user=null; st.list=[]; st.idx=-1; audio.pause(); if(unsub){unsub();unsub=null;} show('login'); }
   });
   audio.addEventListener('timeupdate',()=>{
     if(audio.duration){ document.getElementById('prog').style.width=(audio.currentTime/audio.duration*100)+'%'; document.getElementById('t-cur').textContent=fmt(audio.currentTime); document.getElementById('t-dur').textContent=fmt(audio.duration); }
